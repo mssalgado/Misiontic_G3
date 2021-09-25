@@ -1,24 +1,15 @@
 package dao;
 
-//Prueba DAO GitHub
-
-//Otro cambio
-
 import db.ConexionDB;
 import java.sql.ResultSet;
 import to.TOUsuarios;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-/**
- *
- * @author fredl
- */
 public class DAOUsuarios {
 
     private ConexionDB con;
-    private final String nombreTabla = "Usuarios";
+    private final String nombreTabla = "usuarios";
     private final String[] columnas = {"nombreUsuario", "clave", "rolUsuario", "nombres", "apellidos", "genero", "fechaNacimiento",
         "tipoIdentificacion", "numeroIdentificacion", "direccion", "telefono", "correoPersonal", "ciudadDomicilio"};
 
