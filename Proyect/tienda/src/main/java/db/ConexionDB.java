@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 public class ConexionDB {
 
@@ -17,56 +17,42 @@ public class ConexionDB {
     private String host = "";
     private String username = "";
     private String password = "";
-    public Connection con = null;
+    private Connection con = null;
     private Statement stmt = null;
     private ResultSet rs = null;
-    private boolean local;
-//Constructor sin parmetros
 
     public ConexionDB() {
-        local = true;//pude establecer este valor en falso para conectarse al servidor remoto
         DB_driver = "com.mysql.jdbc.Driver";
-        if (local) {
-            host = "localhost:3306";
-            db = "nombreBaseDeDatos";
-            url = "jdbc:mysql://" + host + "/" + db; //URL DB
-            username = "root"; //usuario base de datos 
-            password = "root";
-        } else {
-            host = "mysql1007.mochahost.com:3306";
-            db = "tienda";
-            url = "jdbc:mysql://" + host + "/" + db; //URL DB
-            username = "root"; //usuario base de datos global 
-            password = "root";
-        }
+        host = "localhost:3306";
+        db = "tienda_virtual_v2";
+        url = "jdbc:mysql://" + host + "/" + db;
+        username = "root";
+        password = "root";
+
         try {
-//Asignacin del Driver
             Class.forName(DB_driver);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-// Realizar la conexion
             con = DriverManager.getConnection(url, username, password);
             con.setTransactionIsolation(8);
-            System.out.println("conectado");
-        } catch (SQLException ex) {
+            System.out.println("Conectado");
+        } catch (Exception ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        // Realizar la conexin
     }
-//Retornar la conexin
 
     public Connection getConnection() {
         try {
             con.setAutoCommit(true);
             return con;
+
         } catch (SQLException ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
-//Cerrar la conexin
 
     public void closeConnection(Connection con) {
         if (con != null) {
@@ -86,37 +72,59 @@ public class ConexionDB {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
     }
 
-    public boolean commitDB(boolean param) {
+    public boolean commitDB() {
         try {
             con.commit();
             return true;
+
         } catch (SQLException ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
     }
 
-    public boolean rollbackDB(boolean param) {
+    public boolean rollBack() {
         try {
             con.rollback();
             return true;
+
         } catch (SQLException ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
     }
-// Mtodo que devuelve un ResultSet de una consulta (tratamiento de SELECT)
 
-    public ResultSet consultartabla(String nombretabla) {
-        String query = "SELECT * FROM" + nombretabla;
+    public ArrayList<String> getColumns(String nombreTabla) {
+        ArrayList<String> columnas = new ArrayList<>();
+        String query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '"
+                + db + "' AND TABLE_NAME = '" + nombreTabla + "' ORDER BY ORDINAL_POSITION";
         try {
-            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                if (!rs.getString("COLUMN_NAME").equals("id" + nombreTabla)) {
+                    columnas.add(rs.getString("COLUMN_NAME"));
+                }
+            }
+            return columnas;
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (RuntimeException ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (Exception ex) {
+            Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public ResultSet consultarTabla(String nombreTabla) {
+        String query = "SELECT * FROM " + nombreTabla;
+        try {
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException ex) {
@@ -129,13 +137,12 @@ public class ConexionDB {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-
     }
-    public ResultSet consultarVista(String nombretabla) {
-        String query = "SELECT * FROM vista" + nombretabla;
+
+    public ResultSet consultarVista(String nombreTabla) {
+        String query = "SELECT * FROM vista" + nombreTabla;
         try {
-            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery(query);
             return rs;
         } catch (SQLException ex) {
@@ -148,22 +155,22 @@ public class ConexionDB {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-
     }
 
-// Metodo que realiza un INSERT 
-    public int insertar(String nombreTabla, String[] columnas, String[] valores) {
+    public int insertar(String nombreTabla, String[] valores) {
 
-        StringBuilder query = new StringBuilder("INSERT INTO");
+        ArrayList<String> columnas = getColumns(nombreTabla);
+        StringBuilder query = new StringBuilder("INSERT INTO ");
         query.append(nombreTabla);
-        query.append(" (");
-        for (int i = 0; i < columnas.length; i++) {
-            query.append(columnas[i]);
-            if (i < columnas.length) {
+        query.append("(");
+        for (int i = 0; i < columnas.size(); i++) {
+            query.append(columnas.get(i));
+            if (i < columnas.size()) {
                 query.append(",");
             }
         }
-        query.append(") VALUES(");
+        query.append(") VALUES (");
+
         for (int i = 0; i < valores.length; i++) {
             query.append("'");
             query.append(valores[i]);
@@ -172,7 +179,7 @@ public class ConexionDB {
                 query.append(",");
             }
         }
-        query.append(" )");
+        query.append(")");
 
         try {
             stmt = con.createStatement();
@@ -187,23 +194,21 @@ public class ConexionDB {
         } catch (Exception ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
-
         }
-
     }
-    // Metodo que realizar un UPDATE
 
-    public boolean actualizar(String nombreTabla, String[] columnas, String[] valores, int id) {
+    public boolean actualizar(String nombreTabla, String[] valores, int id) {
 
-        StringBuilder query = new StringBuilder("INSERT INTO");
+        ArrayList<String> columnas = getColumns(nombreTabla);
+        StringBuilder query = new StringBuilder("UPDATE ");
         query.append(nombreTabla);
-        query.append(" SET ");
-        for (int i = 0; i < columnas.length; i++) {
-            query.append(columnas[i]);
+        query.append("SET");
+        for (int i = 0; i < valores.length; i++) {
+            query.append(columnas.get(i));
             query.append(" = '");
             query.append(valores[i]);
-            query.append("'");
-            if (i < columnas.length) {
+            query.append(" = '");
+            if (i < valores.length) {
                 query.append(",");
             }
         }
@@ -225,18 +230,17 @@ public class ConexionDB {
         } catch (Exception ex) {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-
         }
-
     }
 
     public boolean borrar(String nombreTabla, int id) {
-        StringBuilder query = new StringBuilder("DELETE FROM");
+        StringBuilder query = new StringBuilder("DELETE FORM ");
         query.append(nombreTabla);
-        query.append(" WHERE id ");
+        query.append(" WHERE id");
         query.append(nombreTabla);
         query.append(" = ");
         query.append(id);
+
         try {
             stmt = con.createStatement();
             stmt.executeQuery(query.toString());
@@ -251,6 +255,6 @@ public class ConexionDB {
             Logger.getLogger(ConexionDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
     }
+
 }
