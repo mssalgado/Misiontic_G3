@@ -8,12 +8,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author sebastian
- */
+
 public class ConexionDB {
-// Configuracion de la conexion a la base de datos
 
     private String DB_driver = "";
     private String url = "";
