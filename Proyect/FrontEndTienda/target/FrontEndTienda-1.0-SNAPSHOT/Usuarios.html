@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AdminLTE 3 | General Form Elements</title>
+
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="dist/css/adminlte.min.css">
+        <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+
+    </head>
+    <body class="hold-transition sidebar-mini">
+        <div class="wrapper">
+            <!-- Navbar -->
+            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+
+                <!-- Right navbar links -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Navbar Search -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+
+                        </a>
+
+                    </li>
+
+                    <!-- Messages Dropdown Menu -->
+
+                    <!-- Notifications Dropdown Menu -->
+
+
+                </ul>
+            </nav>
+
+
+            <!-- Main Sidebar Container -->
+            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                <!-- Brand Logo -->
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Sidebar user (optional) -->
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="image">
+                            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        </div>
+                        <div class="info">
+                            <a href="#" class="d-block">Usuarios</a>
+                        </div>
+                    </div>
+
+                    <!-- SidebarSearch Form -->
+
+
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                                 with font-awesome or any other icon font library -->
+
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Menú
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="../mailbox/mailbox.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Vender</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../mailbox/compose.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Inventario</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../mailbox/read-mail.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Todas las facturas</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1>Usuarios</h1>
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                                    <li class="breadcrumb-item active">Usuarios</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div><!-- /.container-fluid -->
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- left column -->
+                            <div class="col-md-12">
+                                <!-- Registrar Usuarios -->
+
+                                <div class="card card-primary">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Registrar nuevo Usuario</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- Fila 1 -->
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Nombres</label>
+                                                <input type="text" class="form-control" placeholder="Nombres">
+                                            </div>
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Apellidos</label>
+                                                <input type="text" class="form-control" placeholder="Apellidos">
+                                            </div>
+                                            <!-- select -->
+                                            <div class="col-2">
+                                                <div class="form-group">
+                                                    <label>Genero</label>
+                                                    <select class="form-control">
+                                                        <option>--Selecione--</option>
+                                                        <option>Masculino</option>
+                                                        <option>Femenino</option>
+                                                        <option>Otro</option>                                                            
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Fila 2 -->
+                                        <div class="row">
+                                            <!-- select -->
+                                            <div class="col-2">
+                                                <div class="form-group">
+                                                    <label>Tipo de Documento</label>
+                                                    <select class="form-control">
+                                                        <option>--Selecione--</option>
+                                                        <option>CC</option>
+                                                        <option>TI</option>
+                                                        <option>CE</option>                                                            
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">N° de Documento</label>
+                                                <input type="text" class="form-control" placeholder="N° de Documento">
+                                            </div>
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Fecha de nacimiento</label>
+                                                <input type="text" class="form-control" placeholder="dd/mm/aaaa">
+                                            </div>
+                                        </div>
+
+                                        <!-- Fila 3 -->
+                                        <div class="row">
+
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Ciudad de domicilio</label>
+                                                <input type="text" class="form-control" placeholder="Ciudad de domicilio">
+                                            </div>
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Dirección</label>
+                                                <input type="text" class="form-control" placeholder="Dirección">
+                                            </div>
+
+                                            <div class="col-2">
+                                                <label for="exampleInputEmail1">Telefono</label>
+                                                <input type="text" class="form-control" placeholder="Teléfono">
+                                            </div>
+                                        </div>
+                                        <!-- Fila 4 -->
+                                        <div class="row">
+
+                                            <div class="col-2">
+                                                <div class="form-group">
+                                                    <label>Rol</label>
+                                                    <select class="form-control">
+                                                        <option>--Selecione--</option>
+                                                        <option>Administrador</option>
+                                                        <option>Vendedor</option>                                                                                                                  
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Correo personal</label>
+                                                <input type="email" class="form-control" placeholder="correo@mail.com">
+                                            </div>
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Usuario</label>
+                                                <input type="text" class="form-control" placeholder="Usuario">
+                                            </div>
+
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Contraseña</label>
+                                                <input type="text" class="form-control" placeholder="Contraseña">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="card-footer">
+
+
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                        <button type="submit" class="btn btn-primary">Limpiar</button>
+                                        <button type="submit" class="btn btn-primary">Ver lista</button>
+                                    </div>
+
+
+
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+
+
+                        </div>
+                        <!--/.col (right) -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- LISTA DE USUARIOS -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Lista de Usuarios</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">ID</th>
+                                        <th>Nombres</th>
+                                        <th>Apellidos</th>
+                                        <th>Genero</th>
+                                        <th>Tipo de documento</th>
+                                        <th>N° de documento</th>
+                                        <th style="width: 40px">Label</th>
+                                        <th>Fecha de nacimiento</th>
+                                        <th>Ciudad de domicilio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Update software</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-danger">55%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Clean database</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-warning">70%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Cron job running</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar bg-primary" style="width: 30%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-primary">30%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Fix and squish bugs</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">90%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                  
+
+
+
+            </div><!-- /.container-fluid -->
+
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+            <b>Version</b> 3.1.0
+        </div>
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>
+</body>
+</html>
