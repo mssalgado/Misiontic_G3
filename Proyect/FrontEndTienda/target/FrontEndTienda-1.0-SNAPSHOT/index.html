@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>AdminLTE 3 | Log in (v2)</title>
+        <title>Mi Tienda | Inicio de sesión</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,7 +30,7 @@
 
                     <form>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Usuario" ng-model="tc.usuario">
+                            <input type="text" class="form-control" placeholder="Usuario" ng-model="tc.nombreUsuario">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
@@ -48,8 +48,8 @@
                         <div class="row">
 
                             <!-- /.col -->
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block" ng-click="tc.login()">Iniciar sesion</button>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary btn-block" ng-click="tc.login()">Iniciar sesión</button>
                             </div>
                             <!-- /.col -->
                         </div>
@@ -72,7 +72,7 @@
     </body>
     <script>
 
-                                    var app = angular.module('login', []);
+        var app = angular.module('login', []);
                                     app.controller('testController', ['$http', initController]);
                                     function initController($http) {
                                         var controlador = this;
@@ -88,7 +88,7 @@
                                                 controlador.respuesta = res.data;
                                                 if (res.data.idUsuarios == 0)
                                                 {
-                                                    alert("El usuarios y/o la clave utiliZados son incorrectos, favor verificar");
+                                                    alert("El usuarios y/o la clave utilizados son incorrectos, favor verificar");
                                                 } else {
                                                     window.location.href = "Usuarios.html";
                                                 }

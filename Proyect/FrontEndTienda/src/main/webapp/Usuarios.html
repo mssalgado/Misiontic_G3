@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>AdminLTE 3 | General Form Elements</title>
+        <title>Mi Tienda | Usuarios</title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -122,8 +122,8 @@
                 </section>
 
                 <!-- Main content -->
-                <section class="content">
-                    <div class="container-fluid">
+                <section class="content" ng-app="usuarios2" ng-controller="testController as tc">
+                    <div class="container-fluid" >
                         <div class="row">
                             <!-- left column -->
                             <div class="col-md-12">
@@ -136,20 +136,45 @@
                                     <div class="card-body">
                                         <!-- Fila 1 -->
                                         <div class="row">
+
+                                            <div class="col-2">
+                                                <div class="form-group">
+                                                    <label>Rol</label>
+                                                    <select class="form-control" ng-model="tc.usuario.rolUsuario">
+                                                        <option selected="selected" >Seleccione...</option>
+                                                        <option>Administrador</option>
+                                                        <option>Vendedor</option>                                                                                                                  
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Usuario</label>
+                                                <input type="text" class="form-control" placeholder="Usuario" ng-model="tc.usuario.nombreUsuario">
+                                            </div>
+
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Contraseña</label>
+                                                <input type="text" class="form-control" placeholder="Contraseña"ng-model="tc.usuario.clave">
+                                            </div>
+                                        </div>  
+
+                                        <!-- Fila 2 -->
+                                        <div class="row">
                                             <div class="col-3">
                                                 <label for="exampleInputEmail1">Nombres</label>
-                                                <input type="text" class="form-control" placeholder="Nombres">
+                                                <input type="text" class="form-control" placeholder="Nombres" ng-model="tc.usuario.nombres">
                                             </div>
                                             <div class="col-3">
                                                 <label for="exampleInputEmail1">Apellidos</label>
-                                                <input type="text" class="form-control" placeholder="Apellidos">
+                                                <input type="text" class="form-control" placeholder="Apellidos" ng-model="tc.usuario.apellidos">
                                             </div>
                                             <!-- select -->
                                             <div class="col-2">
                                                 <div class="form-group">
                                                     <label>Genero</label>
-                                                    <select class="form-control">
-                                                        <option>--Selecione--</option>
+                                                    <select class="form-control" ng-model="tc.usuario.genero">
+                                                        <option selected="selected"  >Seleccione...</option>
                                                         <option>Masculino</option>
                                                         <option>Femenino</option>
                                                         <option>Otro</option>                                                            
@@ -157,14 +182,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Fila 2 -->
+                                        <!-- Fila 3 -->
                                         <div class="row">
                                             <!-- select -->
                                             <div class="col-2">
                                                 <div class="form-group">
                                                     <label>Tipo de Documento</label>
-                                                    <select class="form-control">
-                                                        <option>--Selecione--</option>
+                                                    <select class="form-control" ng-model="tc.usuario.tipoIdentificacion">
+                                                        <option selected="selected" n>Seleccione...</option>
                                                         <option>CC</option>
                                                         <option>TI</option>
                                                         <option>CE</option>                                                            
@@ -173,69 +198,46 @@
                                             </div>
                                             <div class="col-3">
                                                 <label for="exampleInputEmail1">N° de Documento</label>
-                                                <input type="text" class="form-control" placeholder="N° de Documento">
+                                                <input type="text" class="form-control" placeholder="N° de Documento" ng-model="tc.usuario.numeroIdentificacion">
                                             </div>
                                             <div class="col-3">
                                                 <label for="exampleInputEmail1">Fecha de nacimiento</label>
-                                                <input type="text" class="form-control" placeholder="dd/mm/aaaa">
+                                                <input type="text" class="form-control" placeholder="dd/mm/aaaa"  ng-model="tc.usuario.fechaNacimiento">
                                             </div>
                                         </div>
 
-                                        <!-- Fila 3 -->
+                                        <!-- Fila 4 -->
                                         <div class="row">
 
                                             <div class="col-3">
                                                 <label for="exampleInputEmail1">Ciudad de domicilio</label>
-                                                <input type="text" class="form-control" placeholder="Ciudad de domicilio">
+                                                <input type="text" class="form-control" placeholder="Ciudad de domicilio"  ng-model="tc.usuario.ciudadDomicilio">
                                             </div>
                                             <div class="col-3">
                                                 <label for="exampleInputEmail1">Dirección</label>
-                                                <input type="text" class="form-control" placeholder="Dirección">
+                                                <input type="text" class="form-control" placeholder="Dirección"  ng-model="tc.usuario.direccion">
                                             </div>
 
                                             <div class="col-2">
                                                 <label for="exampleInputEmail1">Telefono</label>
-                                                <input type="text" class="form-control" placeholder="Teléfono">
+                                                <input type="text" class="form-control" placeholder="Teléfono"  ng-model="tc.usuario.telefono">
                                             </div>
-                                        </div>
-                                        <!-- Fila 4 -->
-                                        <div class="row">
-
-                                            <div class="col-2">
-                                                <div class="form-group">
-                                                    <label>Rol</label>
-                                                    <select class="form-control">
-                                                        <option>--Selecione--</option>
-                                                        <option>Administrador</option>
-                                                        <option>Vendedor</option>                                                                                                                  
-                                                    </select>
-                                                </div>
-                                            </div>
-
-
                                             <div class="col-3">
                                                 <label for="exampleInputEmail1">Correo personal</label>
-                                                <input type="email" class="form-control" placeholder="correo@mail.com">
-                                            </div>
-                                            <div class="col-3">
-                                                <label for="exampleInputEmail1">Usuario</label>
-                                                <input type="text" class="form-control" placeholder="Usuario">
-                                            </div>
-
-                                            <div class="col-3">
-                                                <label for="exampleInputEmail1">Contraseña</label>
-                                                <input type="text" class="form-control" placeholder="Contraseña">
+                                                <input type="email" class="form-control" placeholder="correo@mail.com"  ng-model="tc.usuario.correoPersonal">
                                             </div>
                                         </div>
+
                                     </div>
 
 
                                     <div class="card-footer">
 
 
-                                        <button type="submit" class="btn btn-primary">Guardar</button>
-                                        <button type="submit" class="btn btn-primary">Limpiar</button>
-                                        <button type="submit" class="btn btn-primary">Ver lista</button>
+
+                                        <button type="submit" class="btn btn-primary" ng-click="tc.limpiar()">Limpiar</button>
+                                        <button type="submit" class="btn btn-primary" ng-click="tc.listar()">Ver lista</button>
+                                        <button type="submit" class="btn btn-primary" ng-click="tc.guardar()">Guardar</button>
                                     </div>
 
 
@@ -258,106 +260,211 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 10px">ID</th>
-                                        <th>Nombres</th>
-                                        <th>Apellidos</th>
-                                        <th>Genero</th>
-                                        <th>Tipo de documento</th>
-                                        <th>N° de documento</th>
-                                        <th style="width: 40px">Label</th>
-                                        <th>Fecha de nacimiento</th>
-                                        <th>Ciudad de domicilio</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>Update software</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-danger">55%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>Clean database</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-warning">70%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>Cron job running</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-primary" style="width: 30%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-primary">30%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td>Fix and squish bugs</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-success" style="width: 90%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-success">90%</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                            <div style="overflow:scroll;">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+
+                                            <th style="width: 10px">ID</th>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Genero</th>
+                                            <th>Tipo de documento</th>
+                                            <th>N° de documento</th>
+                                            <th>Fecha de nacimiento</th>
+                                            <th>Ciudad de domicilio</th>
+                                            <th>Dirección</th>
+                                            <th>Telefono</th>
+                                            <th>Correo Personal</th>
+                                            <th>Rol</th>
+                                            <th>Usuario</th>
+                                            <!-- /<th>Contraseña</th> -->
+                                            <th>Editar</th>
+                                            <th>Eliminar</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="usuario in tc.usuarios">
+                                            <td>{{usuario.idUsuarios}}</td>
+                                            <td>{{usuario.nombres}}</td>
+                                            <td>{{usuario.apellidos}}</td>
+                                            <td>{{usuario.genero}}</td>
+                                            <td>{{usuario.tipoIdentificacion}}</td>
+                                            <td>{{usuario.numeroIdentificacion}}</td>
+                                            <td>{{usuario.fechaNacimiento}}</td>
+                                            <td>{{usuario.ciudadDomicilio}}</td>
+                                            <td>{{usuario.direccion}}</td>
+                                            <td>{{usuario.telefono}}</td>
+                                            <td>{{usuario.correoPersonal}}</td>
+                                            <td>{{usuario.rolUsuario}}</td>
+                                            <td>{{usuario.nombreUsuario}}</td>
+
+                                            <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="tc.seleccionar(usuario.idUsuarios)"><i class="fas fa-edit"></i></a></span>
+                                            <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Close" ng-click="tc.eliminar(usuario.idUsuarios)"><i class="fas fa-trash"></i></a></span>
+
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <!-- /.card-body -->
-                  
 
 
 
-            </div><!-- /.container-fluid -->
+
+                    </div><!-- /.container-fluid -->
 
 
-        </section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.1.0
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="float-right d-none d-sm-block">
+                    <b>Version</b> 3.1.0
+                </div>
+                <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+            </footer>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
         </div>
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer>
+        <!-- ./wrapper -->
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+        <!-- jQuery -->
+        <script src="plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- bs-custom-file-input -->
+        <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="dist/js/adminlte.min.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="dist/js/demo.js"></script>
+        <!-- Page specific script -->
+        <script>
+            $(function () {
+                bsCustomFileInput.init();
+            });
+        </script>
+    </body>
+    <script>
+        var app = angular.module('usuarios2', []);
+        app.controller('testController', ['$http', initController]);
+        function initController($http) {
+            var controlador = this;
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- bs-custom-file-input -->
-<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- Page specific script -->
-<script>
-    $(function () {
-        bsCustomFileInput.init();
-    });
-</script>
-</body>
+
+
+            controlador.listar = function () {
+                var parametros = {opcion: "listar"};
+
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8080/Prueba/controller/UsuarioController.jsp',
+                    params: parametros
+                }).then(function (res) {
+                    //alert("hola" + res.data.idUsuarios);
+                    console.log(res);
+                    controlador.usuarios = res.data;
+                    controlador.usuario.idUsuarios= undefined;
+
+                });
+            };
+
+            controlador.guardar = function () {
+                if (controlador.usuario.idUsuarios === undefined) {
+                    var parametros = {opcion: "insertar", datos: JSON.stringify(controlador.usuario)};
+
+                    $http({
+                        method: 'POST',
+                        url: 'http://localhost:8080/Prueba/controller/UsuarioController.jsp',
+                        params: parametros
+                    }).then(function (res) {
+                        //alert("hola" + res.data.idUsuarios);
+                        console.log(res);
+                        controlador.respuesta = res.data;
+                        controlador.listar();
+                        controlador.limpiar();
+
+                    });}
+                else {
+                    var parametros = {opcion: "actualizar", datos: JSON.stringify(controlador.usuario)};
+
+                  $http({
+                        method: 'POST',
+                        url: 'http://localhost:8080/Prueba/controller/UsuarioController.jsp',
+                        params: parametros
+                 }).then(function (res) {
+                        //alert("hola" + res.data.idUsuarios);
+                        console.log(res);
+                        controlador.respuesta = res.data;
+                        controlador.listar();
+                        controlador.limpiar();
+
+                    });
+               }
+
+            };
+
+
+            controlador.limpiar = function () {
+                controlador.usuario.nombres = "";
+                controlador.usuario.clave = "";
+                controlador.usuario.apellidos = "";
+                controlador.usuario.genero = "Seleccione...";
+                controlador.usuario.tipoIdentificacion = "Seleccione...";
+                controlador.usuario.numeroIdentificacion = "";
+                controlador.usuario.fechaNacimiento = "";
+                controlador.usuario.ciudadDomicilio = "";
+                controlador.usuario.direccion = "";
+                controlador.usuario.telefono = "";
+                controlador.usuario.correoPersonal = "";
+                controlador.usuario.rolUsuario = "";
+                controlador.usuario.nombreUsuario = "";
+            };
+
+
+            controlador.seleccionar = function (id) {
+                for (var i = 0; i < controlador.usuarios.length; i++) {
+                    if (id === controlador.usuarios[i].idUsuarios) {
+                        controlador.usuario = controlador.usuarios[i];
+                    }
+                }
+            };
+
+
+            controlador.eliminar = function (id) {
+                for (var i = 0; i < controlador.usuarios.length; i++) {
+                    if (id === controlador.usuarios[i].idUsuarios) {
+                        controlador.usuario = controlador.usuarios[i];
+                    }
+                }
+
+                var parametros = {opcion: "eliminar", datos: JSON.stringify(controlador.usuario)};
+
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8080/Prueba/controller/UsuarioController.jsp',
+                    params: parametros
+                }).then(function (res) {
+                    //alert("hola" + res.data.idUsuarios);
+                    console.log(res);
+                    controlador.listar();
+
+                });
+            };
+
+
+        }
+    </script>
+
+
 </html>
