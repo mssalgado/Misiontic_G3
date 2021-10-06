@@ -27,7 +27,7 @@ public class ConexionDB {
         db = "tienda_virtual_v2";
         url = "jdbc:mysql://" + host + "/" + db;
         username = "root";
-        password = "carro098";
+        password = "root";
 
         try {
             Class.forName(DB_driver);
