@@ -1,0 +1,10 @@
+controller\ControllerUsuarios.class
+controller\ControllerFacturas.class
+dao\DAOFacturas.class
+dao\DAOUsuarios.class
+db\ConexionDB.class
+dao\DAODetallesFacturas.class
+to\TODetalleFacturas.class
+to\TOFacturas.class
+to\TOUsuarios.class
+to\TOProductos.class
